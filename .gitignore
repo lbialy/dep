@@ -1,0 +1,12 @@
+.bsp
+.idea
+.metals
+.vscode
+.scala-build
+target
+project/target
+project/project
+*.iml
+out
+dep
+dep.jar

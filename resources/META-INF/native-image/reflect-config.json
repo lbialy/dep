@@ -1,0 +1,59 @@
+[
+{
+  "name":"[B"
+},
+{
+  "name":"[C"
+},
+{
+  "name":"fastparse.Implicits$Optioner$",
+  "fields":[{"name":"GenericOptionerImplicit0$lzy1"}]
+},
+{
+  "name":"fastparse.Implicits$Sequencer$",
+  "fields":[{"name":"UnitSequencer0$lzy1"}]
+},
+{
+  "name":"fastparse.IndexedParserInput",
+  "fields":[{"name":"lineNumberLookup$lzy1"}]
+},
+{
+  "name":"java.awt.Image"
+},
+{
+  "name":"java.io.InputStream"
+},
+{
+  "name":"java.io.Reader"
+},
+{
+  "name":"java.lang.ClassValue"
+},
+{
+  "name":"java.lang.String"
+},
+{
+  "name":"java.lang.invoke.VarHandle",
+  "methods":[{"name":"releaseFence","parameterTypes":[] }]
+},
+{
+  "name":"java.net.URL"
+},
+{
+  "name":"java.nio.ByteBuffer"
+},
+{
+  "name":"java.nio.CharBuffer"
+},
+{
+  "name":"java.util.List"
+},
+{
+  "name":"ma.chinespirit.dep.Clipboard$",
+  "fields":[{"name":"clipboard$lzy1"}]
+},
+{
+  "name":"sun.misc.Unsafe",
+  "fields":[{"name":"theUnsafe"}]
+}
+]

@@ -1,0 +1,23 @@
+{
+  "resources":{
+  "includes":[{
+    "pattern":"\\QMETA-INF/services/java.lang.System$LoggerFinder\\E"
+  }, {
+    "pattern":"java.datatransfer:\\Qsun/datatransfer/resources/flavormap.properties\\E"
+  }, {
+    "pattern":"java.desktop:\\Qsun/awt/resources/awt_en.properties\\E"
+  }, {
+    "pattern":"java.desktop:\\Qsun/awt/resources/awt_en_PL.properties\\E"
+  }, {
+    "pattern":"java.desktop:\\Qsun/awt/resources/awtosx_en.properties\\E"
+  }, {
+    "pattern":"java.desktop:\\Qsun/awt/resources/awtosx_en_PL.properties\\E"
+  }]},
+  "bundles":[{
+    "name":"sun.awt.resources.awt",
+    "locales":["en-PL"]
+  }, {
+    "name":"sun.awt.resources.awtosx",
+    "locales":["en-PL"]
+  }]
+}
