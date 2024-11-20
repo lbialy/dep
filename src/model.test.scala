@@ -4,6 +4,8 @@ import munit.FunSuite
 
 class ModelTest extends FunSuite:
 
+  given RenderContext = RenderContext()
+
   test("render sbt dependency") {
     val sbtDep = Dependency.Sbt(
       "org.scalatest",
@@ -62,6 +64,36 @@ class ModelTest extends FunSuite:
     )
   }
 
+  test("render gradle dependency with no scala version with assumeScala") {
+    given RenderContext = RenderContext(assumeScala = true)
+    val gradleDep = Dependency.Gradle(
+      "org.scalatest",
+      ArtifactId("scalatest", None, None),
+      "3.2.9",
+      Scope.Main
+    )
+
+    assertEquals(
+      gradleDep.render,
+      """implementation 'org.scalatest:scalatest_3:3.2.9'"""
+    )
+  }
+
+  test("render gradle dependency with no scala version without assumeScala") {
+    given RenderContext = RenderContext(assumeScala = false)
+    val gradleDep = Dependency.Gradle(
+      "org.scalatest",
+      ArtifactId("scalatest", None, None),
+      "3.2.9",
+      Scope.Main
+    )
+
+    assertEquals(
+      gradleDep.render,
+      """implementation 'org.scalatest:scalatest:3.2.9'"""
+    )
+  }
+
   test("render maven dependency") {
     val mavenDep = Dependency.Maven(
       "org.scalatest",
@@ -78,6 +110,48 @@ class ModelTest extends FunSuite:
         |  <version>3.2.9</version>
         |  <scope>test</scope>
         |</dependency>""".stripMargin
+    )
+  }
+
+  test("render maven dependency with no scala version with assumeScala") {
+    given RenderContext = RenderContext(assumeScala = true)
+
+    val mavenDep = Dependency.Maven(
+      "org.scalatest",
+      ArtifactId("scalatest", None, None),
+      "3.2.9",
+      Scope.Test
+    )
+
+    assertEquals(
+      mavenDep.render,
+      """<dependency>
+        |  <groupId>org.scalatest</groupId>
+        |  <artifactId>scalatest_3</artifactId>
+        |  <version>3.2.9</version>
+        |  <scope>test</scope>
+        |</dependency>""".stripMargin
+    )
+  }
+
+  test("render maven dependency with no scala version without assumeScala") {
+    given RenderContext = RenderContext(assumeScala = false)
+
+    val mavenDep = Dependency.Maven(
+      "org.scalatest",
+      ArtifactId("scalatest", None, None),
+      "3.2.9",
+      Scope.Test
+    )
+
+    assertEquals(
+      mavenDep.render,
+      """<dependency>
+          |  <groupId>org.scalatest</groupId>
+          |  <artifactId>scalatest</artifactId>
+          |  <version>3.2.9</version>
+          |  <scope>test</scope>
+          |</dependency>""".stripMargin
     )
   }
 

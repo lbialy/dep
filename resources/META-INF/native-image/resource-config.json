@@ -3,6 +3,10 @@
   "includes":[{
     "pattern":"\\QMETA-INF/services/java.lang.System$LoggerFinder\\E"
   }, {
+    "pattern":"\\QMETA-INF/services/javax.xml.parsers.SAXParserFactory\\E"
+  }, {
+    "pattern":"\\QMETA-INF/services/sbt.testing.Framework\\E"
+  }, {
     "pattern":"java.datatransfer:\\Qsun/datatransfer/resources/flavormap.properties\\E"
   }, {
     "pattern":"java.desktop:\\Qsun/awt/resources/awt_en.properties\\E"
@@ -12,6 +16,8 @@
     "pattern":"java.desktop:\\Qsun/awt/resources/awtosx_en.properties\\E"
   }, {
     "pattern":"java.desktop:\\Qsun/awt/resources/awtosx_en_PL.properties\\E"
+  }, {
+    "pattern":"java.xml:\\Qjdk/xml/internal/jdkcatalog/JDKCatalog.xml\\E"
   }]},
   "bundles":[{
     "name":"sun.awt.resources.awt",

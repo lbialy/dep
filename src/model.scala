@@ -1,5 +1,9 @@
 package ma.chinespirit.dep
 
+import scala.collection.SortedMap
+
+case class RenderContext(assumeScala: String | Boolean = true)
+
 case class ScalaVersion(version: String):
   def isPrecise: Boolean = version.count(_ == '.') > 1
 
@@ -16,8 +20,15 @@ case class ArtifactId(
   crossPlatform: Option[CrossPlatform],
   scalaVersion: Option[ScalaVersion]
 ):
-  def render(full: Boolean): String =
-    val suffixes = s"${crossPlatform.map(_.render).map("_" + _).getOrElse("")}${scalaVersion.map(_.version).map("_" + _).getOrElse("")}"
+  def render(full: Boolean)(using ctx: RenderContext): String =
+    val assumedScala = ctx.assumeScala match
+      case true  => s"_3" // assume scala 3 by default
+      case false => s""
+      case str   => s"_$str"
+
+    val suffixes =
+      s"${crossPlatform.map(_.render).map("_" + _).getOrElse("")}${scalaVersion.map(_.version).map("_" + _).getOrElse(assumedScala)}"
+
     if full then s"${baseArtifact}$suffixes" else baseArtifact
 
   def preciseScalaVersion: Boolean = scalaVersion match
@@ -31,6 +42,54 @@ enum DependencyType:
 
 enum Scope:
   case Main, Test
+
+enum Format:
+  case sbt, scalaCli, mill, gradle, maven, repl
+
+object Format:
+  val mapped: Map[String, Format] = Map(
+    "sbt" -> sbt,
+    "scala-cli" -> scalaCli,
+    "scala" -> scalaCli,
+    "mill" -> mill,
+    "amm" -> mill,
+    "ammonite" -> mill,
+    "gradle" -> gradle,
+    "maven" -> maven,
+    "mvn" -> maven,
+    "m2" -> maven,
+    "pom" -> maven,
+    "repl" -> repl
+  )
+
+  inline def of(str: String): Option[Format] = mapped.get(str)
+
+  val byKind: Map[Format, Vector[String]] =
+    mapped.groupBy { case (_, v) => v }.view.mapValues(_.keys.toVector.sortBy(-_.size)).toMap
+
+  val validIdentifiers: Vector[String] = mapped.keys.toVector.sorted
+
+  def validFormats: String =
+    // reverse lexicographical order because scala-cli, sbt, repl, mill, maven, gradle
+    // is also the order of popularity of the formats in scala community
+    // (and I'm shilling for scala-cli like a mad man so I'm putting it at the top)
+    val reverseOrdering = summon[Ordering[String]].reverse
+    val keys            = values.map(_.productPrefix).sorted(using reverseOrdering)
+
+    val message = keys.foldLeft(Vector("available formats (with identifiers to use) are:")) { case (lines, key) =>
+      val validEntries = byKind.get(Format.valueOf(key)).getOrElse(Vector.empty)
+      val keyName      = key.padTo(keys.maxBy(_.length()).length() + 1, ' ').capitalize
+
+      lines :+ s"  ${keyName}-> ${validEntries.mkString("", ", ", "")}"
+    }
+
+    message.mkString(System.lineSeparator())
+
+extension (scalaCli: Dependency.ScalaCli)
+  def renderRepl(using RenderContext): String =
+    val renderedDirective = scalaCli.render
+    val depPosition       = renderedDirective.indexOf("dep")
+    renderedDirective.substring(depPosition, renderedDirective.size).prependedAll("--")
 
 enum Dependency:
   case Sbt(organization: String, artifactId: ArtifactId, version: String, dependencyType: DependencyType, scope: Scope)
@@ -279,7 +338,7 @@ enum Dependency:
         case ArtifactId(baseArtifact, None, None) =>
           Dependency.Maven(groupId, ArtifactId(baseArtifact, None, None), version, scope)
 
-  def render: String = this match
+  def render(using ctx: RenderContext): String = this match
     case Sbt(org, artifact, version, depType, scope) => // render sbt dependency string
       val percents = depType match
         case DependencyType.Java                  => "%"
@@ -287,9 +346,8 @@ enum Dependency:
         case DependencyType.ScalaCrossPlatform(_) => "%%%"
 
       val shouldRenderFullArtifact = depType match
-        case DependencyType.Scala(precise)              => precise
-        case DependencyType.ScalaCrossPlatform(precise) => precise
-        case _                                          => false
+        case DependencyType.Java => true
+        case _                   => false
 
       s""""$org" $percents "${artifact.render(shouldRenderFullArtifact)}" % "$version""""
 
@@ -308,9 +366,8 @@ enum Dependency:
         case DependencyType.ScalaCrossPlatform(_)          => "::"
 
       val shouldRenderFullArtifact = depType match
-        case DependencyType.Scala(precise)              => precise
-        case DependencyType.ScalaCrossPlatform(precise) => precise
-        case _                                          => false
+        case DependencyType.Java => true
+        case _                   => false
 
       s"//> using ${scopeDirective}dep $org$firstColons${artifact.render(shouldRenderFullArtifact)}$secondColons$version"
 
@@ -325,9 +382,8 @@ enum Dependency:
         case DependencyType.ScalaCrossPlatform(_)          => "::"
 
       val shouldRenderFullArtifact = depType match
-        case DependencyType.Scala(precise)              => precise
-        case DependencyType.ScalaCrossPlatform(precise) => precise
-        case _                                          => false
+        case DependencyType.Java => true
+        case _                   => false
 
       s"""ivy"$org$firstColons${artifact.render(shouldRenderFullArtifact)}$secondColons$version""""
 
@@ -358,5 +414,14 @@ enum Dependency:
         </dependency>
 
       scala.xml.PrettyPrinter(120, 2).format(pomXml)
+
+  def renderTo(format: Format)(using RenderContext): String =
+    format match
+      case Format.sbt      => toSbt.render
+      case Format.scalaCli => toScalaCli.render
+      case Format.mill     => toMill.render
+      case Format.gradle   => toGradle.render
+      case Format.maven    => toMaven.render
+      case Format.repl     => toScalaCli.renderRepl
 
 end Dependency

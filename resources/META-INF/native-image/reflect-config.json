@@ -6,6 +6,35 @@
   "name":"[C"
 },
 {
+  "name":"[Ljava.lang.String;"
+},
+{
+  "name":"[Ljava.lang.annotation.Annotation;"
+},
+{
+  "name":"[Lsbt.testing.TaskDef;"
+},
+{
+  "name":"caseapp.core.Arg",
+  "fields":[{"name":"names$lzy1"}]
+},
+{
+  "name":"caseapp.core.RemainingArgs",
+  "fields":[{"name":"all$lzy1"}, {"name":"indexed$lzy1"}, {"name":"remaining$lzy1"}, {"name":"unparsed$lzy1"}]
+},
+{
+  "name":"caseapp.core.app.CaseApp",
+  "fields":[{"name":"finalHelp$lzy1"}]
+},
+{
+  "name":"caseapp.core.parser.ParserCompanion",
+  "fields":[{"name":"Step$lzy1"}]
+},
+{
+  "name":"com.sun.org.apache.xerces.internal.jaxp.SAXParserFactoryImpl",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
   "name":"fastparse.Implicits$Optioner$",
   "fields":[{"name":"GenericOptionerImplicit0$lzy1"}]
 },
@@ -49,8 +78,359 @@
   "name":"java.util.List"
 },
 {
+  "name":"java.util.concurrent.atomic.AtomicBoolean",
+  "fields":[{"name":"value"}]
+},
+{
+  "name":"java.util.concurrent.atomic.AtomicReference",
+  "fields":[{"name":"value"}]
+},
+{
+  "name":"ma.chinespirit.dep.ArtifactId",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"ma.chinespirit.dep.ArtifactId$",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"ma.chinespirit.dep.ArtifactIdParser",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"ma.chinespirit.dep.ArtifactIdParser$",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"ma.chinespirit.dep.ArtifactIdParserTest",
+  "queryAllPublicConstructors":true,
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"ma.chinespirit.dep.Cli",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"ma.chinespirit.dep.Cli$",
+  "queryAllPublicConstructors":true,
+  "fields":[{"name":"given_ArgParser_Format$lzy1"}]
+},
+{
+  "name":"ma.chinespirit.dep.Cli$FlagsAndOptions",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"ma.chinespirit.dep.Cli$FlagsAndOptions$",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"ma.chinespirit.dep.Clipboard",
+  "queryAllPublicConstructors":true
+},
+{
   "name":"ma.chinespirit.dep.Clipboard$",
+  "queryAllPublicConstructors":true,
   "fields":[{"name":"clipboard$lzy1"}]
+},
+{
+  "name":"ma.chinespirit.dep.CouldNotInferFormat",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"ma.chinespirit.dep.CouldNotInferFormat$",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"ma.chinespirit.dep.CrossPlatform",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"ma.chinespirit.dep.CrossPlatform$",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"ma.chinespirit.dep.CrossPlatform$Native",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"ma.chinespirit.dep.CrossPlatform$Native$",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"ma.chinespirit.dep.CrossPlatform$ScalaJS",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"ma.chinespirit.dep.CrossPlatform$ScalaJS$",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"ma.chinespirit.dep.Dependency",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"ma.chinespirit.dep.Dependency$",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"ma.chinespirit.dep.Dependency$Gradle",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"ma.chinespirit.dep.Dependency$Gradle$",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"ma.chinespirit.dep.Dependency$Maven",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"ma.chinespirit.dep.Dependency$Maven$",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"ma.chinespirit.dep.Dependency$Mill",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"ma.chinespirit.dep.Dependency$Mill$",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"ma.chinespirit.dep.Dependency$Sbt",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"ma.chinespirit.dep.Dependency$Sbt$",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"ma.chinespirit.dep.Dependency$ScalaCli",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"ma.chinespirit.dep.Dependency$ScalaCli$",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"ma.chinespirit.dep.DependencyType",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"ma.chinespirit.dep.DependencyType$",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"ma.chinespirit.dep.DependencyType$$anon$1",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"ma.chinespirit.dep.DependencyType$Scala",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"ma.chinespirit.dep.DependencyType$Scala$",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"ma.chinespirit.dep.DependencyType$ScalaCrossPlatform",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"ma.chinespirit.dep.DependencyType$ScalaCrossPlatform$",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"ma.chinespirit.dep.Format",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"ma.chinespirit.dep.Format$",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"ma.chinespirit.dep.Format$$anon$3",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"ma.chinespirit.dep.GradleDependencyParser",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"ma.chinespirit.dep.GradleDependencyParser$",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"ma.chinespirit.dep.GradleDependencyParserTest",
+  "queryAllPublicConstructors":true,
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"ma.chinespirit.dep.InferenceFailure",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"ma.chinespirit.dep.MavenDependencyParser",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"ma.chinespirit.dep.MavenDependencyParser$",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"ma.chinespirit.dep.MavenDependencyParserTest",
+  "queryAllPublicConstructors":true,
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"ma.chinespirit.dep.MillDependencyFormat",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"ma.chinespirit.dep.MillDependencyParser",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"ma.chinespirit.dep.MillDependencyParser$",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"ma.chinespirit.dep.MillDependencyParserTest",
+  "queryAllPublicConstructors":true,
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"ma.chinespirit.dep.ModelTest",
+  "queryAllPublicConstructors":true,
+  "fields":[{"name":"given_RenderContext$lzy1"}],
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"ma.chinespirit.dep.Parser",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"ma.chinespirit.dep.Parser$",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"ma.chinespirit.dep.ParsingFailure",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"ma.chinespirit.dep.ParsingFailure$",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"ma.chinespirit.dep.RenderContext",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"ma.chinespirit.dep.RenderContext$",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"ma.chinespirit.dep.SbtDependencyParser",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"ma.chinespirit.dep.SbtDependencyParser$",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"ma.chinespirit.dep.SbtDependencyParserTest",
+  "queryAllPublicConstructors":true,
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"ma.chinespirit.dep.ScalaCliDependencyParser",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"ma.chinespirit.dep.ScalaCliDependencyParser$",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"ma.chinespirit.dep.ScalaCliDependencyParserTest",
+  "queryAllPublicConstructors":true,
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"ma.chinespirit.dep.ScalaVersion",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"ma.chinespirit.dep.ScalaVersion$",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"ma.chinespirit.dep.Scope",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"ma.chinespirit.dep.Scope$",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"ma.chinespirit.dep.Scope$$anon$2",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"ma.chinespirit.dep.main$package",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"ma.chinespirit.dep.main$package$",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"ma.chinespirit.dep.model$package",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"ma.chinespirit.dep.model$package$",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"ma.chinespirit.dep.parsing$package",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"ma.chinespirit.dep.parsing$package$",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"ma.chinespirit.dep.run",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"munit.Framework",
+  "queryAllPublicConstructors":true,
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"munit.FunSuite",
+  "fields":[{"name":"FunFixture$lzy1"}]
+},
+{
+  "name":"munit.MUnitRunner",
+  "fields":[{"name":"munitFixtures$lzy1"}, {"name":"munitTests$lzy1"}],
+  "methods":[{"name":"<init>","parameterTypes":["java.lang.Class"] }]
+},
+{
+  "name":"munit.Suite"
+},
+{
+  "name":"scala.xml.PrettyPrinter",
+  "fields":[{"name":"Break$lzy1"}]
+},
+{
+  "name":"scala.xml.XML$",
+  "fields":[{"name":"scala$xml$factory$XMLLoader$$parserInstance$lzy3"}]
+},
+{
+  "name":"scala.xml.parsing.FactoryAdapter",
+  "fields":[{"name":"scala$xml$factory$XMLLoader$$parserInstance$lzy1"}]
 },
 {
   "name":"sun.misc.Unsafe",

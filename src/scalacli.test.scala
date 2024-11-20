@@ -102,4 +102,22 @@ class ScalaCliDependencyParserTest extends FunSuite:
         case Left(err)        => fail(s"Failed to parse '${err.input}':\n$err")
   }
 
+  test("bug case #1") {
+    val dep = """//> using dep org.scalamacros:::paradise:2.1.1"""
+    val expectedDep = Dependency.ScalaCli(
+      "org.scalamacros",
+      ArtifactId("paradise", None, None),
+      "2.1.1",
+      DependencyType.Scala(true),
+      Scope.Main
+    )
+
+    ScalaCliDependencyParser.parse(dep) match
+      case Right(parsedDep) =>
+        assertEquals(parsedDep, expectedDep, dep)
+        val rendered = parsedDep.render(using RenderContext())
+        assertEquals(rendered, dep, dep)
+      case Left(err) => fail(s"Failed to parse '${err.input}':\n$err")
+  }
+
 end ScalaCliDependencyParserTest

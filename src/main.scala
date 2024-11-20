@@ -1,34 +1,41 @@
 package ma.chinespirit.dep
 
+import scala.io.Source.stdin
+
+def readFromStdin: String =
+  println("Paste your dependency here and press enter twice:")
+  stdin.getLines().takeWhile(_ != "").mkString("\n")
+
 @main def run(args: String*): Unit =
-  System.setProperty("testfx.robot", "glass")
-  System.setProperty("testfx.headless", "true")
-  System.setProperty("prism.order", "sw")
-  System.setProperty("prism.text", "t2k")
+  Clipboard.setupClipboard()
 
-  if args.isEmpty then // this should handle target format flags
-    println("Paste your dependency here and press enter twice:")
-    val input = scala.io.Source.stdin.getLines().takeWhile(_ != "").mkString("\n")
+  val (flagsAndOptions, remaining) = Cli.parseFlagsAndOptions(args)
 
-    Parser.parse(input) match
-      case Right(parsedDep) =>
-        val result = parsedDep.toScalaCli.render
-        println(result)
-        Clipboard.put(result)
-        println("Dependency copied to clipboard")
-        sys.exit(0)
-      case Left(err) => // stdin is not a valid dep
-        println(err.render)
-        sys.exit(1)
-  else
-    Dep.parse(args*) match
-      case Right(dep) =>
-        dep match
-          case Dep.Web => println("starting web interface")
-      case Left(help) =>
-        Parser.parse(args.mkString(" ")) match
-          case Right(parsedDep) =>
-            println(parsedDep.toScalaCli.render)
-          case Left(err) =>
-            println(help.toString)
-            sys.exit(1)
+  val bareWords  = remaining.all
+  val parseInput = if bareWords.isEmpty then readFromStdin else bareWords.mkString(" ")
+
+  val parseResult =
+    flagsAndOptions.source match
+      case Some(sourceFormat) => // user provided explicit source format
+        Parser.parse(parseInput, sourceFormat)
+      case None => // user did not provide a source format, try to infer one
+        Parser.inferFormatAndParse(parseInput)
+
+  parseResult match
+    case Right(parsedDep) =>
+      given RenderContext = RenderContext(
+        flagsAndOptions.targetScalaVersion.getOrElse(flagsAndOptions.assumeScala3)
+      )
+
+      val result = parsedDep.renderTo(flagsAndOptions.target)
+
+      println(result)
+      Clipboard.put(result)
+
+      println("Dependency copied to clipboard!")
+      sys.exit(0)
+    case Left(err) =>
+      println(err.render)
+      sys.exit(1)
+
+end run
