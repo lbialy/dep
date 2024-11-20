@@ -14,7 +14,6 @@
 
 // for cli parsing
 //> using dep com.github.alexarchambault::case-app:2.1.0-M29
-//> using dep com.monovore::decline::2.4.1
 
 // for web interface // later, maybe
 ///> using dep com.softwaremill.sttp.tapir::tapir-jdkhttp-server:1.11.9
