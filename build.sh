@@ -14,8 +14,10 @@ scala test . -J -agentlib:native-image-agent=config-output-dir=$(pwd)/resources/
 echo 'implementation("org.openjfx:javafx:22.0.2")' | \
   scala run . -J -agentlib:native-image-agent=config-merge-dir=$(pwd)/resources/META-INF/native-image
 
-scala package -f . --assembly -o dep.jar
-
-native-image -jar dep.jar -Djava.awt.headless=false --no-fallback -o dep
-
-rm dep.jar
+scala package -f . \
+  --native-image \
+  --graalvm-jvm-id=liberica-nik:23.0.1 \
+  --graalvm-args=-Djava.awt.headless=false \
+  --graalvm-args=--no-fallback \
+  --graalvm-args=--install-exit-handlers \
+  -o dep

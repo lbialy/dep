@@ -31,8 +31,33 @@
   "fields":[{"name":"Step$lzy1"}]
 },
 {
+  "name":"com.sun.jna.CallbackProxy",
+  "methods":[{"name":"callback","parameterTypes":["java.lang.Object[]"] }]
+},
+{
+  "name":"com.sun.jna.NativeLong",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
   "name":"com.sun.org.apache.xerces.internal.jaxp.SAXParserFactoryImpl",
   "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"cue4s.ChangeModeDarwin$termios",
+  "allDeclaredFields":true,
+  "fields":[{"name":"OPTIONS"}, {"name":"STRING_ENCODING"}, {"name":"STRUCTURE_ALIGNMENT"}, {"name":"TYPE_MAPPER"}]
+},
+{
+  "name":"cue4s.InputProviderImpl$",
+  "fields":[{"name":"nativeInterop$lzy1"}]
+},
+{
+  "name":"cue4s.Platform$",
+  "fields":[{"name":"os$lzy1"}]
+},
+{
+  "name":"cue4s.Prompts",
+  "fields":[{"name":"inputProvider$lzy1"}]
 },
 {
   "name":"fastparse.Implicits$Optioner$",
@@ -59,14 +84,45 @@
   "name":"java.lang.ClassValue"
 },
 {
+  "name":"java.lang.Object",
+  "methods":[{"name":"equals","parameterTypes":["java.lang.Object"] }, {"name":"hashCode","parameterTypes":[] }, {"name":"toString","parameterTypes":[] }]
+},
+{
   "name":"java.lang.String"
+},
+{
+  "name":"java.lang.Throwable",
+  "methods":[{"name":"addSuppressed","parameterTypes":["java.lang.Throwable"] }]
+},
+{
+  "name":"java.lang.invoke.MethodHandle",
+  "methods":[{"name":"bindTo","parameterTypes":["java.lang.Object"] }, {"name":"invokeWithArguments","parameterTypes":["java.lang.Object[]"] }]
+},
+{
+  "name":"java.lang.invoke.MethodHandles",
+  "methods":[{"name":"lookup","parameterTypes":[] }, {"name":"privateLookupIn","parameterTypes":["java.lang.Class","java.lang.invoke.MethodHandles$Lookup"] }]
+},
+{
+  "name":"java.lang.invoke.MethodHandles$Lookup",
+  "methods":[{"name":"findSpecial","parameterTypes":["java.lang.Class","java.lang.String","java.lang.invoke.MethodType","java.lang.Class"] }, {"name":"in","parameterTypes":["java.lang.Class"] }, {"name":"unreflectSpecial","parameterTypes":["java.lang.reflect.Method","java.lang.Class"] }]
+},
+{
+  "name":"java.lang.invoke.MethodType",
+  "methods":[{"name":"methodType","parameterTypes":["java.lang.Class","java.lang.Class[]"] }]
 },
 {
   "name":"java.lang.invoke.VarHandle",
   "methods":[{"name":"releaseFence","parameterTypes":[] }]
 },
 {
+  "name":"java.lang.reflect.Method",
+  "methods":[{"name":"isDefault","parameterTypes":[] }, {"name":"isVarArgs","parameterTypes":[] }]
+},
+{
   "name":"java.net.URL"
+},
+{
+  "name":"java.nio.Buffer"
 },
 {
   "name":"java.nio.ByteBuffer"
@@ -113,14 +169,34 @@
 {
   "name":"ma.chinespirit.dep.Cli$",
   "queryAllPublicConstructors":true,
-  "fields":[{"name":"given_ArgParser_Format$lzy1"}]
+  "fields":[{"name":"given_ArgParser_Format$lzy1"}, {"name":"given_ArgParser_Platform$lzy1"}, {"name":"given_ArgParser_ScalaVersionSuffix$lzy1"}]
 },
 {
-  "name":"ma.chinespirit.dep.Cli$FlagsAndOptions",
+  "name":"ma.chinespirit.dep.Cli$CliApp$",
   "queryAllPublicConstructors":true
 },
 {
-  "name":"ma.chinespirit.dep.Cli$FlagsAndOptions$",
+  "name":"ma.chinespirit.dep.Cli$Convert$",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"ma.chinespirit.dep.Cli$ConvertOptions",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"ma.chinespirit.dep.Cli$ConvertOptions$",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"ma.chinespirit.dep.Cli$Search$",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"ma.chinespirit.dep.Cli$SearchOptions",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"ma.chinespirit.dep.Cli$SearchOptions$",
   "queryAllPublicConstructors":true
 },
 {
@@ -162,6 +238,10 @@
 },
 {
   "name":"ma.chinespirit.dep.CrossPlatform$ScalaJS$",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"ma.chinespirit.dep.DefaultAwareCommandsEntryPoint",
   "queryAllPublicConstructors":true
 },
 {
@@ -221,7 +301,7 @@
   "queryAllPublicConstructors":true
 },
 {
-  "name":"ma.chinespirit.dep.DependencyType$$anon$1",
+  "name":"ma.chinespirit.dep.DependencyType$$anon$2",
   "queryAllPublicConstructors":true
 },
 {
@@ -249,7 +329,7 @@
   "queryAllPublicConstructors":true
 },
 {
-  "name":"ma.chinespirit.dep.Format$$anon$3",
+  "name":"ma.chinespirit.dep.Format$$anon$4",
   "queryAllPublicConstructors":true
 },
 {
@@ -268,6 +348,11 @@
 {
   "name":"ma.chinespirit.dep.InferenceFailure",
   "queryAllPublicConstructors":true
+},
+{
+  "name":"ma.chinespirit.dep.LoadJNATest",
+  "queryAllPublicConstructors":true,
+  "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
   "name":"ma.chinespirit.dep.MavenDependencyParser",
@@ -364,6 +449,18 @@
   "queryAllPublicConstructors":true
 },
 {
+  "name":"ma.chinespirit.dep.ScalaVersionSuffix",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"ma.chinespirit.dep.ScalaVersionSuffix$",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"ma.chinespirit.dep.ScalaVersionSuffix$$anon$1",
+  "queryAllPublicConstructors":true
+},
+{
   "name":"ma.chinespirit.dep.Scope",
   "queryAllPublicConstructors":true
 },
@@ -372,7 +469,7 @@
   "queryAllPublicConstructors":true
 },
 {
-  "name":"ma.chinespirit.dep.Scope$$anon$2",
+  "name":"ma.chinespirit.dep.Scope$$anon$3",
   "queryAllPublicConstructors":true
 },
 {
@@ -401,6 +498,62 @@
 },
 {
   "name":"ma.chinespirit.dep.run",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"ma.chinespirit.dep.search",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"ma.chinespirit.dep.search$",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"ma.chinespirit.dep.search$$anon$2",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"ma.chinespirit.dep.search$$anon$3",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"ma.chinespirit.dep.search$$anon$4",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"ma.chinespirit.dep.search$Artifact",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"ma.chinespirit.dep.search$Artifact$",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"ma.chinespirit.dep.search$FoundProject",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"ma.chinespirit.dep.search$FoundProject$",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"ma.chinespirit.dep.search$Platform",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"ma.chinespirit.dep.search$Platform$",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"ma.chinespirit.dep.search$Platform$$anon$1",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"ma.chinespirit.dep.search$ScaladexApi",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"ma.chinespirit.dep.search$Search",
   "queryAllPublicConstructors":true
 },
 {
@@ -435,5 +588,13 @@
 {
   "name":"sun.misc.Unsafe",
   "fields":[{"name":"theUnsafe"}]
+},
+{
+  "name":"sun.security.provider.NativePRNG",
+  "methods":[{"name":"<init>","parameterTypes":["java.security.SecureRandomParameters"] }]
+},
+{
+  "name":"sun.security.provider.SHA",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
 }
 ]

@@ -7,6 +7,8 @@
   }, {
     "pattern":"\\QMETA-INF/services/sbt.testing.Framework\\E"
   }, {
+    "pattern":"\\Qcom/sun/jna/darwin-aarch64/libjnidispatch.jnilib\\E"
+  }, {
     "pattern":"java.datatransfer:\\Qsun/datatransfer/resources/flavormap.properties\\E"
   }, {
     "pattern":"java.desktop:\\Qsun/awt/resources/awt_en.properties\\E"

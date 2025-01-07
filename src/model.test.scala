@@ -65,7 +65,7 @@ class ModelTest extends FunSuite:
   }
 
   test("render gradle dependency with no scala version with assumeScala") {
-    given RenderContext = RenderContext(assumeScala = true)
+    given RenderContext = RenderContext(assumeScala3 = true)
     val gradleDep = Dependency.Gradle(
       "org.scalatest",
       ArtifactId("scalatest", None, None),
@@ -80,7 +80,7 @@ class ModelTest extends FunSuite:
   }
 
   test("render gradle dependency with no scala version without assumeScala") {
-    given RenderContext = RenderContext(assumeScala = false)
+    given RenderContext = RenderContext(assumeScala3 = false)
     val gradleDep = Dependency.Gradle(
       "org.scalatest",
       ArtifactId("scalatest", None, None),
@@ -114,7 +114,7 @@ class ModelTest extends FunSuite:
   }
 
   test("render maven dependency with no scala version with assumeScala") {
-    given RenderContext = RenderContext(assumeScala = true)
+    given RenderContext = RenderContext(assumeScala3 = true)
 
     val mavenDep = Dependency.Maven(
       "org.scalatest",
@@ -135,7 +135,7 @@ class ModelTest extends FunSuite:
   }
 
   test("render maven dependency with no scala version without assumeScala") {
-    given RenderContext = RenderContext(assumeScala = false)
+    given RenderContext = RenderContext(assumeScala3 = false)
 
     val mavenDep = Dependency.Maven(
       "org.scalatest",

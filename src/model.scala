@@ -2,10 +2,19 @@ package ma.chinespirit.dep
 
 import scala.collection.SortedMap
 
-case class RenderContext(assumeScala: String | Boolean = true)
+case class RenderContext(assumeScala3: String | Boolean = true)
 
 case class ScalaVersion(version: String):
   def isPrecise: Boolean = version.count(_ == '.') > 1
+
+  def toSuffix: Option[ScalaVersionSuffix] =
+    if isPrecise then ScalaVersionSuffix.of(version.split('.').take(2).mkString("."))
+    else ScalaVersionSuffix.of(version)
+
+enum ScalaVersionSuffix:
+  case `3`, `2.13`, `2.12`, `2.11`, `2.10`
+object ScalaVersionSuffix:
+  def of(s: String): Option[ScalaVersionSuffix] = values.find(_.toString().toLowerCase == s.toLowerCase)
 
 enum CrossPlatform:
   case Native(version: String)
@@ -21,19 +30,27 @@ case class ArtifactId(
   scalaVersion: Option[ScalaVersion]
 ):
   def render(full: Boolean)(using ctx: RenderContext): String =
-    val assumedScala = ctx.assumeScala match
-      case true  => s"_3" // assume scala 3 by default
-      case false => s""
-      case str   => s"_$str"
+    def suffixes =
+      val assumedScala = ctx.assumeScala3 match
+        case true  => s"_3"
+        case false => s""
+        case str   => s"_$str"
 
-    val suffixes =
-      s"${crossPlatform.map(_.render).map("_" + _).getOrElse("")}${scalaVersion.map(_.version).map("_" + _).getOrElse(assumedScala)}"
+      val renderedPlatform = crossPlatform.map(_.render).map("_" + _).getOrElse("")
 
-    if full then s"${baseArtifact}$suffixes" else baseArtifact
+      val renderedScalaVersion = scalaVersion.map(_.version).map("_" + _).getOrElse(assumedScala)
+
+      s"$renderedPlatform$renderedScalaVersion"
+
+    if full then s"$baseArtifact$suffixes" else baseArtifact
 
   def preciseScalaVersion: Boolean = scalaVersion match
     case Some(scalaVersion) if scalaVersion.isPrecise => true
     case _                                            => false
+
+object ArtifactId:
+  def parse(input: String): Either[Throwable, ArtifactId] =
+    ArtifactIdParser.parse(input)
 
 enum DependencyType:
   case Java

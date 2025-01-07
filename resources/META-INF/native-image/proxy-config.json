@@ -1,2 +1,5 @@
 [
+  {
+    "interfaces":["cue4s.ChangeModeDarwin$CLibrary"]
+  }
 ]
