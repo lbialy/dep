@@ -35,16 +35,6 @@ jobs:
           apps: cs
           scala-cli-version: latest
 
-      - name: Print JVM info
-        run: java -version | echo "$JAVA_HOME" 
-
-      - name: Check Liberica NIK installation
-        run: |
-          java -version 2>&1 | grep "24.0.2.r22-nik" > /dev/null || {
-            echo "Liberica-NIK 24.0.2.r22-nik not installed. Exiting.";
-            exit 1;
-          }
-
       - name: Clean native-image configuration
         run: rm -fr resources/META-INF/native-image
 
