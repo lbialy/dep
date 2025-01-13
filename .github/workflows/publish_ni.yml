@@ -48,8 +48,7 @@ jobs:
         uses: coactions/setup-xvfb@v1
         with:
           run: |
-            echo 'implementation("org.openjfx:javafx:22.0.2")' | \
-              scala-cli run . \
+            echo 'implementation("org.openjfx:javafx:22.0.2")' | scala-cli run . \
               -J -agentlib:native-image-agent=config-merge-dir=$(pwd)/resources/META-INF/native-image
 
       - name: Build GraalVM native-image
