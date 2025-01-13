@@ -34,6 +34,7 @@ jobs:
           jvm: liberica-nik:23.0.1
           apps: cs
           scala-cli-version: latest
+          power: true
 
       - name: Clean native-image configuration
         run: rm -fr resources/META-INF/native-image
