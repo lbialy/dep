@@ -36,11 +36,10 @@ jobs:
           scala-cli-version: latest
 
       - name: Set up Liberica NIK 24.0.2-1
-        uses: sdkman/sdkman-action@v1
+        uses: sfesenko/setup-sdkman@v1
         id: sdkman
         with:
-          candidate: java
-          version: 24.0.2.r22-nik
+          deps: 24.0.2.r22-nik
 
       - name: Check Liberica NIK installation
         run: |
