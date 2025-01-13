@@ -32,14 +32,11 @@ jobs:
         uses: VirtusLab/scala-cli-setup@main
         with:
           jvm: liberica-nik:23.0.1
-          apps: bloop
+          apps: cs
           scala-cli-version: latest
 
-      - name: Set up Liberica NIK 24.0.2-1
-        uses: sfesenko/setup-sdkman@v1
-        id: sdkman
-        with:
-          deps: 24.0.2.r22-nik
+      - name: Print JVM info
+        run: java -version | echo "$JAVA_HOME" 
 
       - name: Check Liberica NIK installation
         run: |
@@ -54,13 +51,13 @@ jobs:
       - name: Generate native-image configuration by running tests
         run: |
           scala-cli test . \
-            -J-agentlib:native-image-agent=config-output-dir=$(pwd)/resources/META-INF/native-image
+            -J -agentlib:native-image-agent=config-output-dir=$(pwd)/resources/META-INF/native-image
 
       - name: Enrich configuration by running the app
         run: |
           echo 'implementation("org.openjfx:javafx:22.0.2")' | \
             scala-cli run . \
-            -J-agentlib:native-image-agent=config-merge-dir=$(pwd)/resources/META-INF/native-image
+            -J -agentlib:native-image-agent=config-merge-dir=$(pwd)/resources/META-INF/native-image
 
       - name: Build GraalVM native-image
         run: |
